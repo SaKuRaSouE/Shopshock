@@ -7,12 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    <?php
+<?php
     include_once "db.php";
     $conn = new DataBase();
     $conn->connect();
-    $conn->ShowProduct();
     ?>
-    <a href=""></a>
 </body>
 </html>
