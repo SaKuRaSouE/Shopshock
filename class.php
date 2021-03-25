@@ -11,7 +11,7 @@ class DataBase
                 $this->dbConn->connect_error;
             exit();
         } 
-         else echo "Connerct Success";
+        // else echo "Connerct Success";
     }
     public function ShowProduct()
     {
@@ -41,24 +41,42 @@ class DataBase
             foreach ($row as $key => $value) {
                 echo "<td>{$value}</td>";
             }
-            echo "<td><a href='Add_Product.php'>Shopshock</a></td>";
+            echo "<td><a href='Add_Product.php?Product={$row['Product_id']}'>Shopshock</a></td>";
             echo "</tr>";
         }
         echo "</table>";
     }
     public function InsertData($data)
     {
-      $sql = "INSERT INTO `member`SELECT MAX(member_id)+1,'{$data['name']}','{$data['user']}','{$data['password']}','01' FROM member";
-      $result = $this->dbConn->query($sql);
+        $sql = "INSERT INTO `member`SELECT MAX(member_id)+1,'{$data['name']}','{$data['user']}','{$data['password']}','01' FROM member";
+        $result = $this->dbConn->query($sql);
     }
     public function disconnect()
     {
         $this->dbConn->close;
     }
-    public function varify_user($user,$pass){
-        $sql= "SELECT count(`member_id`) as num ,`name` FROM `member` WHERE `user`='{$user}' and `password`='{$pass}'";
-        $resul=$this->dbConn->query($sql);
-        $row= $resul->fetch_assoc();
+    public function varify_user($user, $pass)
+    {
+        $sql = "SELECT count(`member_id`) as num ,`name` FROM `member` WHERE `user`='{$user}' and `password`='{$pass}'";
+        $result = $this->dbConn->query($sql);
+        $row = $result->fetch_assoc();
         return $row;
+    }
+    public function query($sql)
+    {
+        $result = $this->db->query($sql);
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        return $data;
+    }
+    public function AppProduct($id)
+    {
+        $sql = "SELECT * FROM product, brand, unit WHERE product.Brand_ID = brand.Brand_id AND product.Unit_ID = unit.Unit_id AND product.Product_id = $id";
+        $result = $this->dbConn->query($sql);
+        $row = $result->fetch_assoc();
+        return $row;
+    }
+    public function ShopPO($id){
+        $sql = "SELECT Product_id, Product_code, Product_Name , Brand_name, Unit_name,Cost FROM product, brand, unit WHERE product.Brand_ID = brand.Brand_id AND product.Unit_ID = unit.Unit_id";
+        $result = $this->dbConn->query($sql);
     }
 }

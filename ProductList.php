@@ -11,11 +11,9 @@
     <title>Document</title>
 </head>
 <body>
-<table border="1">
-<tr><td>Djaa</td></tr>
-<tr><td><?php
-echo $_SESSION['username'];
-?></td></tr>
+<table align="right" >
+<tr><td>ยินดีต้อนรับ</td></tr>
+<tr><td>คุณ <?php echo $_SESSION['username']; ?></td></tr>
 </table>
 <?php
     include_once "class.php";
