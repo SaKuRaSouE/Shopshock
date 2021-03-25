@@ -14,10 +14,10 @@
         $reslut=$mycon->varify_user($_POST['log_user'],$_POST['log_pass']);
         session_start();
         if($reslut['num']==1){
-            $_SESSION['name'] = $reslut['name'];
+            $_SESSION['username'] = $reslut['name'];
             header("location: ProductList.php");
         }else{
-            echo "รหัสผ่านไม่ถูกต้อง";
+            echo "<script>alert('รหัสผ่านไม่ถูกต้อง')</script>";
             echo "  <a href='Login.php'>Link back here...</a>";
         }
  }

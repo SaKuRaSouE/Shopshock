@@ -1,3 +1,7 @@
+<?php
+ include_once "Verified.php";
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +11,20 @@
     <title>Document</title>
 </head>
 <body>
+<table border="1">
+<tr><td>Djaa</td></tr>
+<tr><td><?php
+echo $_SESSION['username'];
+?></td></tr>
+</table>
 <?php
     include_once "class.php";
     $conn = new DataBase();
     $conn->connect();
     $conn->ShowProduct();
     ?>
-    <a href=""></a>
+
+
+
 </body>
 </html>

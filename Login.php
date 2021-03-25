@@ -12,10 +12,10 @@
     <form action="handle.php" method="post">
         <h1 style="text-align: center;">SHOPSHOCK</h1>
         <h2 style="text-align: center;">กรุณากรอกชื่อผู้ใช้เเละรหัสผ่านเพื่อเข้าสู่ระบบ</h2>
-        <table align="center">
+        <table align="center" >
             <tr><td>Username :</td><td><input type="text" id="log_user" name="log_user"></td></tr>
             <tr><td>Password : </td><td><input type="password" name="log_pass" id="log_pass"></td></tr>
-            <tr><td colspan="2" ><button type="submit">Submit</button> <button type="reset">Reset</button></td></tr>
+            <tr><td colspan="2" align="center"><button type="submit">Submit</button> <button type="reset">Reset</button> <a href="Register.php"><input type="button" value="Register"></a></td></tr>
         </table>
      
     </form>

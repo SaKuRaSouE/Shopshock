@@ -10,7 +10,8 @@ class DataBase
             echo "Fail to connect to MySql :" .
                 $this->dbConn->connect_error;
             exit();
-        } else echo "Connerct Success";
+        } 
+         else echo "Connerct Success";
     }
     public function ShowProduct()
     {
@@ -20,7 +21,7 @@ class DataBase
         echo "<center><h1> ยินดีต้อนรับเข้าสู่เมนูลูกค้า </h1></center><br>";
         echo "<center><a href='Add_Product.php'>สั่งซื้อสินค้า</a>  ";
         echo "<a href='PO.php'>ชำระเงิน</a>     ";
-        echo "<a href='Login.php'>ออกจากระบบ</a><center>";
+        echo "<a href='Logout.php'>ออกจากระบบ</a><center>";
         echo "<h1>SHOPSHOCK</h1>";
         echo "<h2>Select Product to Cart</h2>";
         echo "<table border='1";
