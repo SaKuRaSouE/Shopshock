@@ -8,7 +8,7 @@
 </head>
 <body>
 <?php
-    include_once "db.php";
+    include_once "class.php";
     $conn = new DataBase();
     $conn->connect();
     $conn->ShowProduct();

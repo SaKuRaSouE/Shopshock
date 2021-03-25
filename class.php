@@ -21,6 +21,8 @@ class DataBase
         echo "<center><a href='Add_Product.php'>สั่งซื้อสินค้า</a>  ";
         echo "<a href='PO.php'>ชำระเงิน</a>     ";
         echo "<a href='Login.php'>ออกจากระบบ</a><center>";
+        echo "<h1>SHOPSHOCK</h1>";
+        echo "<h2>Select Product to Cart</h2>";
         echo "<table border='1";
         $counter = 0;
         while ($row = $result->fetch_assoc()) {
@@ -42,5 +44,20 @@ class DataBase
             echo "</tr>";
         }
         echo "</table>";
+    }
+    public function InsertData($data)
+    {
+      $sql = "INSERT INTO `member`SELECT MAX(member_id)+1,'{$data['name']}','{$data['user']}','{$data['password']}','01' FROM member";
+      $result = $this->dbConn->query($sql);
+    }
+    public function disconnect()
+    {
+        $this->dbConn->close;
+    }
+    public function varify_user($user,$pass){
+        $sql= "SELECT count(`member_id`) as num ,`name` FROM `member` WHERE `user`='{$user}' and `password`='{$pass}'";
+        $resul=$this->dbConn->query($sql);
+        $row= $resul->fetch_assoc();
+        return $row;
     }
 }
